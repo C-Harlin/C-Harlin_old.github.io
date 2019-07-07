@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://C-Harlin.github.io/2018/11/29/NMF-studynote/">
+    <link itemprop="mainEntityOfPage" href="https://C-Harlin.github.io/2019/07/07/RSA加密的数学原理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Harlin">
@@ -313,7 +313,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/29/NMF-studynote/" itemprop="url">NMF studynote</a></h1>
+                <a class="post-title-link" href="/2019/07/07/RSA加密的数学原理/" itemprop="url">RSA加密的数学原理</a></h1>
         
 
         <div class="post-meta">
@@ -325,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-29T15:27:08+08:00">
-                2018-11-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-07T17:08:21+08:00">
+                2019-07-07
               </time>
             
 
@@ -348,18 +348,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/学习笔记/" itemprop="url" rel="index">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
                     <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
@@ -377,8 +366,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/29/NMF-studynote/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/29/NMF-studynote/" itemprop="commentCount"></span>
+                <a href="/2019/07/07/RSA加密的数学原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/07/RSA加密的数学原理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,15 +396,37 @@
 
       
         
-          <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-<h1 id="非负矩阵分解"><a href="#非负矩阵分解" class="headerlink" title="非负矩阵分解"></a>非负矩阵分解</h1>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/29/NMF-studynote/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="RSA加密的数学原理"><a href="#RSA加密的数学原理" class="headerlink" title="RSA加密的数学原理"></a>RSA加密的数学原理</h1><p>用Linux已经很长一段时间了，对SSH早已不陌生。比如早先将博客部署到github上就是用SSH生成了公钥，再比如前一段时间导师让我新装了一台服务器，后来又在上面个写了点代码，远程访问也必须要用SSH。 </p>
+<p>但是吧，就像在Linux下很多莫名其妙的东西一样，大部分时候我都止步于“会用就行”，毕竟要学的东西太多，“but we only live so long”。 </p>
+<p>SSH也一样，虽然用了很多次，但一直都不明白它是什么，在干嘛。 </p>
+<p>直到在组合数学的课上，老师在讲了一点群论的知识后，说要再讲讲群论在加密中的应用，这才让我有机会在课堂上就能解决长久以来的疑惑。</p>
+<h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><h3 id="欧拉函数-varphi-n"><a href="#欧拉函数-varphi-n" class="headerlink" title="欧拉函数$\varphi(n)$"></a>欧拉函数$\varphi(n)$</h3><p>$\varphi(n)$等于比$n$小且与$n$互质的正整数的个数。<br>利用容斥原理，可以得到欧拉函数的计算公式：<br>若$n=p_{1}^{\alpha_{1}}p_{2}^{\alpha_{2}}\cdots p_{k}^{\alpha_{k}}$，其中$p_{i}$为素数且各不相同。<br>那么，$\varphi(n)=n(1-\frac{1}{p_1})(1-\frac{1}{p_2})\cdots (1-\frac{1}{p_k})$</p>
+<h3 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h3><p>若$a$与$n$互质，即$(a,n)=1$，则$a^{\varphi(n)}=1\ mod\ n$</p>
+<h3 id="群"><a href="#群" class="headerlink" title="群"></a>群</h3><p>（有限）群：集合G上有一个二元运算，具有：<br>(a).结合律：$(xy)z=x(yz)$<br>(b).单位元：$∃e∈G ,s.t.  ∀x∈G,xe=ex=x$<br>(c).逆元：$∀x∈G, ∃x^{-1}∈G\ s.t.\  xx^{-1}=x^{−1}x=e$</p>
+<p> 简单来说，群就是一个特殊的集合，在上面定义了一种特殊的“乘法”，满足上述条件即可称为群。<br>举一个简单的例子：<br>给定$n&gt;0$，令$\frac{Z}{nZ}={\bar{0},\bar{1},\cdots,\bar{n-1}}$，其中$\bar{i}$表示除以$n$余$i$的数的全体。<br>这里的$\frac{Z}{nZ}$首先是一个集合，进一步可以验证，在“加法”下，$\bar{i}+\bar{j}=\bar{i+j}$。因此在此“加法”下，集合$\frac{Z}{nZ}$成为群。 </p>
+<p>借着上面这个例子，我们可以顺便给出<strong>子群</strong>的定义：</p>
+<h3 id="子群"><a href="#子群" class="headerlink" title="子群"></a>子群</h3><p>设$G$是一个$n$元群，$H$是它的一个子群，对于$∀x,y∈H, xy∈H$。即子群$H$就是$G$的一个子集，同时还要满足封闭性、结合律、有单位元和逆元。 </p>
+<p>承接上一个例子，我们取$\frac{Z}{nZ}$中所有的逆元，得到一个新的集合：<br>$$ (\frac{Z}{nZ})^<em>={\frac{Z}{nZ}中的可逆元} $$容易验证，$(\frac{Z}{nZ})^</em>$是$\frac{Z}{nZ}$的子群。</p>
+<p>虽然这里只是将$(\frac{Z}{nZ})^<em>$作为子群的一个示例给出，但不要小看它。$(\frac{Z}{nZ})^</em>$有一个接下来要用到的特殊性质，即：$$ \bar{i}可逆\Leftrightarrow(n,i)=1 $$<br>也就是说，$(\frac{Z}{nZ})^<em>$中的所有元素都是与$n$互质且比$n$小的正整数的同余数构成的。由欧拉公式，与$n$互质且比$n$下的正整数的个数为$\varphi(n)$，所以$(\frac{Z}{nZ})^</em>$的阶（即群里面元素的个数）为$\varphi(n)$</p>
+<p>有了上述的数学基础后，我们就可以揭开RSA加密算法的面纱了。</p>
+<h2 id="RSA算法"><a href="#RSA算法" class="headerlink" title="RSA算法"></a>RSA算法</h2><p>RSA加密算法可以称得上是现代密码学的基石。</p>
+<p>传统的加密方法的思想可以参照谍战片中的桥段，即双方约定一种加密规则，发送方用该规则对情报加密，接收方按照规则对情报解密。但这套方法的弊端在于，必须保证加密规则不泄露，一旦加密规则泄露即意味着信息被破解。更可怕的是，你无法知道加密规则是否已经泄露了。</p>
+<p>而RSA加密算法则颠覆了这一过程。简单来说，你有两把钥匙，分别是公钥和私钥。公钥是公开的，而私钥是私密的。发送方用你的公钥对信息进行加密，你收到加密信息后，用私钥对信息进行解密。其他人就算在中途解惑了加密信息也无从下手，因为私钥只有你自己知道。只要私钥安全就能保证信息安全。</p>
+<p>我们来看具体加密过程。假设甲要给乙传送正整数m，这里要求<strong>m小于n且与n互质</strong>。</p>
+<ol>
+<li>第一步<br>选取两个很大的素数$p$、$q$，令$n=pq$，通常$n$会有上百位</li>
+<li>第二步<br>还记得我们之前的提到的关于子群的例子吗？这里我们参照$(\frac{Z}{nZ})^<em>$的形式，取$\bar{e}\in(\frac{Z}{\varphi(n)Z})^</em>$，即$e$与$\varphi(n)$互质。<br>这里的$e$将用来构成公钥。</li>
+<li>第三步<br>因为$\bar{e}\in(\frac{Z}{\varphi(n)Z})^<em>$，那么由群关于逆元的性质，必然存在$\bar{d}\in(\frac{Z}{\varphi(n)Z})^</em>\ s.t.\ \bar{e}\bar{d}=\bar{1}，即ed=1\ mod\ \varphi(n)$。<br>这里的$d$将用来构成私钥。</li>
+<li>第四步<br>发送方用公钥对整数$\bar(m)$加密并传输给接收方：$$ \bar{m} \Rightarrow \bar{m}^e $$</li>
+<li>第五步<br>用私钥进行解密：$$ \bar{m}^e \Rightarrow \bar{m}^{ed} =\bar{m}^{\varphi(n)k+1}=(\bar{m}^{\varphi(n)})^k *\bar{m} $$因为m与n互质，所以由欧拉定理，$\bar{m}^{\varphi(n)}=\bar{1}$。故：$$ \bar{m}^e \Rightarrow \bar{m}^{ed} =\bar{m}^{\varphi(n)k+1}=(\bar{m}^{\varphi(n)})^k *\bar{m}=\bar{m} $$</li>
+</ol>
+<p>至此，我们便完成了对m的加密和解密。<br>（注意，推导里用的是m的同余数$\bar{m}$，对$\bar{m}$成立，当然也对m成立）</p>
+<p>但剩下一点收尾的工作。</p>
+<p>上述推导基于的假设是m与n互质。那要是不互质，还有办法用RSA加密吗？答案是肯定的。证明如下：</p>
+<p>$\because p、q为素数且n=pq$<br>$\therefore 若m与n不互质，则m=pl\ 或\ ql，l\in Z，不妨设m=pl，则：$ $$ \bar{m}^{ed}=\bar{pl}^{\varphi(n)k+1}=\bar{pl}^{(p-1)(q-1)k+1} $$<br>$\because p、q为素数$<br>$\therefore 由欧拉定理(或费马小定理)，\bar{pl}^{q-1}=\bar{1}，即\bar{pl}=1\ mod \ q$<br>$\therefore \bar{pl}^{(p-1)(q-1)k+1}=[\bar{pl}^{q-1}]^{(p-1)k}*\bar{pl}=\bar{pl}$<br>$\therefore \bar{m}^{ed}=pl\ mod\ q$<br>$\therefore \bar{m}^{ed}=tq+pl$<br>$\therefore (pl)^{ed}=tq+pl$<br>易得，$t$可以被$p$整除<br>$\therefore (pl)^{ed}=t^{‘}pq+pl=t^{‘}n+pl=pl\ mod\ n$<br>即，$m^{ed}=m\ mod\ n$</p>
+
+          
         
       
     </div>
@@ -1176,7 +1187,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
