@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Harlin&#39;Blog">
 <meta property="og:description" content="\(\varphi(n)\)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-08T06:44:59.425Z">
+<meta property="og:updated_time" content="2019-07-08T06:53:46.372Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RSA加密的数学原理">
 <meta name="twitter:description" content="\(\varphi(n)\)">
@@ -344,7 +344,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-08 14:44:59" itemprop="dateModified" datetime="2019-07-08T14:44:59+08:00">2019-07-08</time>
+                <time title="Modified: 2019-07-08 14:53:46" itemprop="dateModified" datetime="2019-07-08T14:53:46+08:00">2019-07-08</time>
               </span>
             
           
@@ -398,16 +398,31 @@
       
         <p><span class="math inline">\(\varphi(n)\)</span></p>
 <a id="more"></a>
-<p>​ # RSA加密的数学原理 用Linux已经很长一段时间了，对SSH早已不陌生。比如早先将博客部署到github上就是用SSH生成了公钥，再比如前一段时间导师让我新装了一台服务器，后来又在上面个写了点代码，远程访问也必须要用SSH。</p>
+<p>​ 用Linux已经很长一段时间了，对SSH早已不陌生。比如早先将博客部署到github上就是用SSH生成了公钥，再比如前一段时间导师让我新装了一台服务器，后来又在上面个写了点代码，远程访问也必须要用SSH。</p>
 <p>但是吧，就像在Linux下很多莫名其妙的东西一样，大部分时候我都止步于“会用就行”，毕竟要学的东西太多，“but we only live so long”。</p>
 <p>SSH也一样，虽然用了很多次，但一直都不明白它是什么，在干嘛。</p>
 <p>直到在组合数学的课上，老师在讲了一点群论的知识后，说要再讲讲群论在加密中的应用，这才让我有机会在课堂上就能解决长久以来的疑惑。</p>
 <h2 id="预备知识">预备知识</h2>
 <h3 id="欧拉函数varphin">欧拉函数<span class="math inline">\(\varphi(n)\)</span></h3>
-<p><span class="math inline">\(\varphi(n)\)</span>等于比<span class="math inline">\(n\)</span>小且与<span class="math inline">\(n\)</span>互质的正整数的个数。 利用容斥原理，可以得到欧拉函数的计算公式： 若<span class="math inline">\(n=p_{1}^{\alpha_{1}}p_{2}^{\alpha_{2}}\cdots p_{k}^{\alpha_{k}}\)</span>，其中<span class="math inline">\(p_{i}\)</span>为素数且各不相同。 那么，<span class="math inline">\(\varphi(n)=n(1-\frac{1}{p_1})(1-\frac{1}{p_2})\cdots (1-\frac{1}{p_k})\)</span> ### 欧拉定理 若<span class="math inline">\(a\)</span>与<span class="math inline">\(n\)</span>互质，即<span class="math inline">\((a,n)=1\)</span>，则<span class="math inline">\(a^{\varphi(n)}=1\ mod\ n\)</span> ### 群 （有限）群：集合G上有一个二元运算，具有： (a).结合律：<span class="math inline">\((xy)z=x(yz)\)</span> (b).单位元：<span class="math inline">\(∃e∈G ,s.t. ∀x∈G,xe=ex=x\)</span> (c).逆元：<span class="math inline">\(∀x∈G, ∃x^{-1}∈G\ s.t.\  xx^{-1}=x^{−1}x=e\)</span></p>
-<p>简单来说，群就是一个特殊的集合，在上面定义了一种特殊的“乘法”，满足上述条件即可称为群。 举一个简单的例子： 给定<span class="math inline">\(n&gt;0\)</span>，令<span class="math inline">\(\frac{Z}{nZ}=\{\bar{0},\bar{1},\cdots,\bar{n-1}\}\)</span>，其中<span class="math inline">\(\bar{i}\)</span>表示除以<span class="math inline">\(n\)</span>余<span class="math inline">\(i\)</span>的数的全体。 这里的<span class="math inline">\(\frac{Z}{nZ}\)</span>首先是一个集合，进一步可以验证，在“加法”下，<span class="math inline">\(\bar{i}+\bar{j}=\bar{i+j}\)</span>。因此在此“加法”下，集合<span class="math inline">\(\frac{Z}{nZ}\)</span>成为群。</p>
+<p><span class="math inline">\(\varphi(n)\)</span>等于比<span class="math inline">\(n\)</span>小且与<span class="math inline">\(n\)</span>互质的正整数的个数。</p>
+<p>利用容斥原理，可以得到欧拉函数的计算公式：</p>
+<p>若<span class="math inline">\(n=p_{1}^{\alpha_{1}}p_{2}^{\alpha_{2}}\cdots p_{k}^{\alpha_{k}}\)</span>，其中<span class="math inline">\(p_{i}\)</span>为素数且各不相同。</p>
+<p>那么，<span class="math inline">\(\varphi(n)=n(1-\frac{1}{p_1})(1-\frac{1}{p_2})\cdots (1-\frac{1}{p_k})\)</span></p>
+<h3 id="欧拉定理">欧拉定理</h3>
+<p>若<span class="math inline">\(a\)</span>与<span class="math inline">\(n\)</span>互质，即<span class="math inline">\((a,n)=1\)</span>，则<span class="math inline">\(a^{\varphi(n)}=1\ mod\ n\)</span></p>
+<h3 id="群">群</h3>
+<p>（有限）群：集合G上有一个二元运算，具有：</p>
+<p>(a).结合律：<span class="math inline">\((xy)z=x(yz)\)</span></p>
+<p>(b).单位元：<span class="math inline">\(∃e∈G ,s.t. ∀x∈G,xe=ex=x\)</span></p>
+<p>(c).逆元：<span class="math inline">\(∀x∈G, ∃x^{-1}∈G\ s.t.\  xx^{-1}=x^{−1}x=e\)</span></p>
+<p>简单来说，群就是一个特殊的集合，在上面定义了一种特殊的“乘法”，满足上述条件即可称为群。</p>
+<p>举一个简单的例子：</p>
+<p>给定<span class="math inline">\(n&gt;0\)</span>，令<span class="math inline">\(\frac{Z}{nZ}=\{\bar{0},\bar{1},\cdots,\bar{n-1}\}\)</span>，其中<span class="math inline">\(\bar{i}\)</span>表示除以<span class="math inline">\(n\)</span>余<span class="math inline">\(i\)</span>的数的全体。</p>
+<p>这里的<span class="math inline">\(\frac{Z}{nZ}\)</span>首先是一个集合，进一步可以验证，在“加法”下，<span class="math inline">\(\bar{i}+\bar{j}=\bar{i+j}\)</span>。因此在此“加法”下，集合<span class="math inline">\(\frac{Z}{nZ}\)</span>成为群。</p>
 <p>借着上面这个例子，我们可以顺便给出<strong>子群</strong>的定义： ### 子群 设<span class="math inline">\(G\)</span>是一个<span class="math inline">\(n\)</span>元群，<span class="math inline">\(H\)</span>是它的一个子群，对于<span class="math inline">\(∀x,y∈H, xy∈H\)</span>。即子群<span class="math inline">\(H\)</span>就是<span class="math inline">\(G\)</span>的一个子集，同时还要满足封闭性、结合律、有单位元和逆元。</p>
-<p>承接上一个例子，我们取<span class="math inline">\(\frac{Z}{nZ}\)</span>中所有的逆元，得到一个新的集合： <span class="math display">\[ (\frac{Z}{nZ})^*=\{\frac{Z}{nZ}中的可逆元\} \]</span>容易验证，<span class="math inline">\((\frac{Z}{nZ})^*\)</span>是<span class="math inline">\(\frac{Z}{nZ}\)</span>的子群。</p>
+<p>承接上一个例子，我们取<span class="math inline">\(\frac{Z}{nZ}\)</span>中所有的逆元，得到一个新的集合：</p>
+<p><span class="math inline">\((\frac{Z}{nZ})^*=\{\frac{Z}{nZ}中的可逆元\}\)</span></p>
+<p>容易验证，<span class="math inline">\((\frac{Z}{nZ})^*\)</span>是<span class="math inline">\(\frac{Z}{nZ}\)</span>的子群。</p>
 <p>虽然这里只是将<span class="math inline">\((\frac{Z}{nZ})^*\)</span>作为子群的一个示例给出，但不要小看它。<span class="math inline">\((\frac{Z}{nZ})^*\)</span>有一个接下来要用到的特殊性质，即：<span class="math display">\[ \bar{i}可逆\Leftrightarrow(n,i)=1 \]</span> 也就是说，<span class="math inline">\((\frac{Z}{nZ})^*\)</span>中的所有元素都是与<span class="math inline">\(n\)</span>互质且比<span class="math inline">\(n\)</span>小的正整数的同余数构成的。由欧拉公式，与<span class="math inline">\(n\)</span>互质且比<span class="math inline">\(n\)</span>下的正整数的个数为<span class="math inline">\(\varphi(n)\)</span>，所以<span class="math inline">\((\frac{Z}{nZ})^*\)</span>的阶（即群里面元素的个数）为<span class="math inline">\(\varphi(n)\)</span></p>
 <p>有了上述的数学基础后，我们就可以揭开RSA加密算法的面纱了。 ## RSA算法 RSA加密算法可以称得上是现代密码学的基石。</p>
 <p>传统的加密方法的思想可以参照谍战片中的桥段，即双方约定一种加密规则，发送方用该规则对情报加密，接收方按照规则对情报解密。但这套方法的弊端在于，必须保证加密规则不泄露，一旦加密规则泄露即意味着信息被破解。更可怕的是，你无法知道加密规则是否已经泄露了。</p>
@@ -619,7 +634,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#预备知识"><span class="nav-number">1.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#欧拉函数varphin"><span class="nav-number">1.1.</span> <span class="nav-text">欧拉函数\(\varphi(n)\)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#预备知识"><span class="nav-number">1.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#欧拉函数varphin"><span class="nav-number">1.1.</span> <span class="nav-text">欧拉函数\(\varphi(n)\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#欧拉定理"><span class="nav-number">1.2.</span> <span class="nav-text">欧拉定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#群"><span class="nav-number">1.3.</span> <span class="nav-text">群</span></a></li></ol></li></ol></div>
             
 
           </div>
