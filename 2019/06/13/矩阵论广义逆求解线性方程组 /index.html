@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Harlin&#39;Blog">
 <meta property="og:description" content="还在用高斯消元法解线性方程组？？广义逆矩阵了解下？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-13T08:47:42.687Z">
+<meta property="og:updated_time" content="2019-07-13T09:03:44.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="矩阵论广义逆求解线性方程组">
 <meta name="twitter:description" content="还在用高斯消元法解线性方程组？？广义逆矩阵了解下？">
@@ -402,7 +402,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-13 16:47:42" itemprop="dateModified" datetime="2019-07-13T16:47:42+08:00">2019-07-13</time>
+                <time title="Modified: 2019-07-13 17:03:44" itemprop="dateModified" datetime="2019-07-13T17:03:44+08:00">2019-07-13</time>
               </span>
             
           
@@ -496,10 +496,14 @@
 <p>定理：设<span class="math inline">\(A\in C^{m×n}，b\in C^{m}，A^{(1,3)}\in A\{1,3\}\)</span>，则<span class="math inline">\(x\in A^{(1,3)}b\)</span>是方程<span class="math inline">\(Ax=b\)</span>的最小二乘解。</p>
 <h3 id="矛盾方程组的极小范数最小二乘解与广义逆矩阵a">矛盾方程组的极小范数最小二乘解与广义逆矩阵<span class="math inline">\(A^+\)</span></h3>
 <p>定理：设<span class="math inline">\(A\in C^{m×n}，b\in C^{m}\)</span>，则<span class="math inline">\(x=A^+b\)</span>是方程组<span class="math inline">\(Ax=b\)</span>的极小范数最小二乘解。</p>
-<p>有了上述定理后，当我们求解线性方程组<span class="math inline">\(Ax=b\)</span>时，先求出<span class="math inline">\(A\)</span>矩阵的广义逆矩阵<span class="math inline">\(A^+\)</span>，具体的两种求法在上面已经给出。</p>
+<p>有了上述定理后，**当我们求解线性方程组<span class="math inline">\(Ax=b\)</span>时，先求出<span class="math inline">\(A\)</span>矩阵的广义逆矩阵<span class="math inline">\(A^+\)</span>，具体的两种求法在上面已经给出。</p>
 <p>然后计算<span class="math inline">\(AA^+b\)</span>是否等于<span class="math inline">\(b\)</span>。</p>
 <p>如果线性方程组相容的话，那么一定满足<span class="math inline">\(AA^+b=b\)</span>，同时求出的<span class="math inline">\(A^+\)</span>就是方程组的解；</p>
-<p>反之，如果<span class="math inline">\(AA^+b\neq b\)</span>，那么方程组无解，求出的<span class="math inline">\(A^+\)</span>就是方程组的极小范数最小二乘解</p>
+<p>反之，如果<span class="math inline">\(AA^+b\neq b\)</span>，那么方程组无解，求出的<span class="math inline">\(A^+\)</span>就是方程组的极小范数最小二乘解**</p>
+<p>平时手算解三四阶的线性方程组的话，还是用高斯消元法比较简单。不过，当矩阵的规模非常大时，就不能指望靠高斯消元法来求解线性方程组了，幸好还有求诸广义逆来求解。</p>
+<p>当我们的思绪再次回到1920年，谁也不知道广义逆这样抽象的理论有何用。</p>
+<p>数学家们造好了形状各异、精巧十足的积木，人类的求知的天梯才得以一阶一阶地向上搭建。</p>
+<p>有几块积木暂时没被用到，但可能会有那么一天，到了某一阶，人们突然发现，之前的那块看似没用的积木用在这里刚刚好啊！</p>
 <p>参考文献： [1].矩阵论/程云鹏，西北工业大学出版社, 1989</p>
 <p>[2].lecture note，张世华</p>
 
