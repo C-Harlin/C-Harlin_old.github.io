@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Harlin&#39;Blog">
 <meta property="og:description" content="还在用高斯消元法解线性方程组？？广义逆矩阵了解下？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-13T09:03:44.178Z">
+<meta property="og:updated_time" content="2019-07-13T09:07:42.491Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="矩阵论广义逆求解线性方程组">
 <meta name="twitter:description" content="还在用高斯消元法解线性方程组？？广义逆矩阵了解下？">
@@ -402,7 +402,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-13 17:03:44" itemprop="dateModified" datetime="2019-07-13T17:03:44+08:00">2019-07-13</time>
+                <time title="Modified: 2019-07-13 17:07:42" itemprop="dateModified" datetime="2019-07-13T17:07:42+08:00">2019-07-13</time>
               </span>
             
           
@@ -501,10 +501,12 @@
 <p>如果线性方程组相容的话，那么一定满足<span class="math inline">\(AA^+b=b\)</span>，同时求出的<span class="math inline">\(A^+\)</span>就是方程组的解；</p>
 <p>反之，如果<span class="math inline">\(AA^+b\neq b\)</span>，那么方程组无解，求出的<span class="math inline">\(A^+\)</span>就是方程组的极小范数最小二乘解**</p>
 <p>平时手算解三四阶的线性方程组的话，还是用高斯消元法比较简单。不过，当矩阵的规模非常大时，就不能指望靠高斯消元法来求解线性方程组了，幸好还有求诸广义逆来求解。</p>
+<h2 id="结语">结语</h2>
 <p>当我们的思绪再次回到1920年，谁也不知道广义逆这样抽象的理论有何用。</p>
 <p>数学家们造好了形状各异、精巧十足的积木，人类的求知的天梯才得以一阶一阶地向上搭建。</p>
 <p>有几块积木暂时没被用到，但可能会有那么一天，到了某一阶，人们突然发现，之前的那块看似没用的积木用在这里刚刚好啊！</p>
-<p>参考文献： [1].矩阵论/程云鹏，西北工业大学出版社, 1989</p>
+<p>参考文献：</p>
+<p>[1].矩阵论/程云鹏，西北工业大学出版社, 1989</p>
 <p>[2].lecture note，张世华</p>
 
       
@@ -761,7 +763,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#penrose的广义逆定义"><span class="nav-number">1.</span> <span class="nav-text">Penrose的广义逆定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求一个矩阵的广义逆"><span class="nav-number">2.</span> <span class="nav-text">求一个矩阵的广义逆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广义逆矩阵与线性方程的求解"><span class="nav-number">3.</span> <span class="nav-text">广义逆矩阵与线性方程的求解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性方程组的相容性和通解"><span class="nav-number">3.1.</span> <span class="nav-text">线性方程组的相容性和通解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相容线性方程组的极小范数解与广义14-逆"><span class="nav-number">3.2.</span> <span class="nav-text">相容线性方程组的极小范数解与广义{1,4}-逆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矛盾方程组的最小二乘解与广义13-逆"><span class="nav-number">3.3.</span> <span class="nav-text">矛盾方程组的最小二乘解与广义{1,3}-逆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矛盾方程组的极小范数最小二乘解与广义逆矩阵a"><span class="nav-number">3.4.</span> <span class="nav-text">矛盾方程组的极小范数最小二乘解与广义逆矩阵\(A^+\)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#penrose的广义逆定义"><span class="nav-number">1.</span> <span class="nav-text">Penrose的广义逆定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求一个矩阵的广义逆"><span class="nav-number">2.</span> <span class="nav-text">求一个矩阵的广义逆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广义逆矩阵与线性方程的求解"><span class="nav-number">3.</span> <span class="nav-text">广义逆矩阵与线性方程的求解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性方程组的相容性和通解"><span class="nav-number">3.1.</span> <span class="nav-text">线性方程组的相容性和通解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相容线性方程组的极小范数解与广义14-逆"><span class="nav-number">3.2.</span> <span class="nav-text">相容线性方程组的极小范数解与广义{1,4}-逆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矛盾方程组的最小二乘解与广义13-逆"><span class="nav-number">3.3.</span> <span class="nav-text">矛盾方程组的最小二乘解与广义{1,3}-逆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矛盾方程组的极小范数最小二乘解与广义逆矩阵a"><span class="nav-number">3.4.</span> <span class="nav-text">矛盾方程组的极小范数最小二乘解与广义逆矩阵\(A^+\)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
             
 
           </div>
