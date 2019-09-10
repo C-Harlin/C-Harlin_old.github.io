@@ -94,19 +94,19 @@
 
 
 
-  <meta name="description" content="位带操作 一学期的嵌入式系统学下来，印象最深的就要属位带操作了，这是典型的用空间换效率的做法，是Cortex-M3内核的一大特色。在此写下一些心得，也算是给本学期嵌入式系统这门课画上一个句号。">
+  <meta name="description" content="一学期的嵌入式系统学下来，印象最深的就要属位带操作了，这是典型的用空间换效率的做法，是Cortex-M3内核的一大特色。在此写下一些心得，也算是给本学期嵌入式系统这门课画上一个句号。">
 <meta name="keywords" content="嵌入式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="位带操作">
 <meta property="og:url" content="https://C-Harlin.github.io/2017/07/07/位带操作/index.html">
 <meta property="og:site_name" content="Harlin&#39;Blog">
-<meta property="og:description" content="位带操作 一学期的嵌入式系统学下来，印象最深的就要属位带操作了，这是典型的用空间换效率的做法，是Cortex-M3内核的一大特色。在此写下一些心得，也算是给本学期嵌入式系统这门课画上一个句号。">
+<meta property="og:description" content="一学期的嵌入式系统学下来，印象最深的就要属位带操作了，这是典型的用空间换效率的做法，是Cortex-M3内核的一大特色。在此写下一些心得，也算是给本学期嵌入式系统这门课画上一个句号。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/Bit%20band%20operation.png">
-<meta property="og:updated_time" content="2018-03-03T13:51:12.000Z">
+<meta property="og:updated_time" content="2019-09-10T08:22:09.594Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="位带操作">
-<meta name="twitter:description" content="位带操作 一学期的嵌入式系统学下来，印象最深的就要属位带操作了，这是典型的用空间换效率的做法，是Cortex-M3内核的一大特色。在此写下一些心得，也算是给本学期嵌入式系统这门课画上一个句号。">
+<meta name="twitter:description" content="一学期的嵌入式系统学下来，印象最深的就要属位带操作了，这是典型的用空间换效率的做法，是Cortex-M3内核的一大特色。在此写下一些心得，也算是给本学期嵌入式系统这门课画上一个句号。">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/Bit%20band%20operation.png">
 
 
@@ -404,7 +404,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-03-03 21:51:12" itemprop="dateModified" datetime="2018-03-03T21:51:12+08:00">2018-03-03</time>
+                <time title="Modified: 2019-09-10 16:22:09" itemprop="dateModified" datetime="2019-09-10T16:22:09+08:00">2019-09-10</time>
               </span>
             
           
@@ -463,8 +463,7 @@
       
 
       
-        <h1 id="位带操作">位带操作</h1>
-<p>一学期的嵌入式系统学下来，印象最深的就要属<strong>位带操作</strong>了，这是典型的用<u><strong>空间换效率</strong></u>的做法，是Cortex-M3内核的一大特色。在此写下一些心得，也算是给本学期嵌入式系统这门课画上一个句号。 <a id="more"></a> ## 什么是位带操作？ ## Cortex-M3在内存中划出了两片1MB大小的<strong>位带区</strong>，每一片位带区都有一片<strong>位带别名区</strong>与之对应。位带别名区的把每个比特膨胀成一个32位的字，这样，通过操作位带别名区中的4个字节的字，就能控制位带区的每一个比特。 <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/Bit%20band%20operation.png" alt="Alt 位带操作"> ## 为什么要有位带操作？ ## 通常，当我们要操作内存的某一位，即某一个比特时，都需要先把这个寄存器的值读到CPU中，然后经过移位、按位与或等等操作，最后再将新的值写回内存中去，完成修改。</p>
+        <p>一学期的嵌入式系统学下来，印象最深的就要属<strong>位带操作</strong>了，这是典型的用<u><strong>空间换效率</strong></u>的做法，是Cortex-M3内核的一大特色。在此写下一些心得，也算是给本学期嵌入式系统这门课画上一个句号。 <a id="more"></a> ## 什么是位带操作？ ## Cortex-M3在内存中划出了两片1MB大小的<strong>位带区</strong>，每一片位带区都有一片<strong>位带别名区</strong>与之对应。位带别名区的把每个比特膨胀成一个32位的字，这样，通过操作位带别名区中的4个字节的字，就能控制位带区的每一个比特。 <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/Bit%20band%20operation.png" alt="Alt 位带操作"> ## 为什么要有位带操作？ ## 通常，当我们要操作内存的某一位，即某一个比特时，都需要先把这个寄存器的值读到CPU中，然后经过移位、按位与或等等操作，最后再将新的值写回内存中去，完成修改。</p>
 <p>这些操作其实没什么难度可言，就是写起来挺麻烦的，说白了就是dirty work……</p>
 <p>因为懒是人类进步的动力嘛，所以我们希望能有办法避开这么复杂的操作，直接对任意比特进行操作。</p>
 <p>于是，位带操作应运而生。</p>
@@ -727,7 +726,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#位带操作"><span class="nav-number">1.</span> <span class="nav-text">位带操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#位带操作的过程"><span class="nav-number">1.1.</span> <span class="nav-text">位带操作的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位带操作的优越性"><span class="nav-number">1.2.</span> <span class="nav-text">位带操作的优越性</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#位带操作的过程"><span class="nav-number">1.</span> <span class="nav-text">位带操作的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位带操作的优越性"><span class="nav-number">2.</span> <span class="nav-text">位带操作的优越性</span></a></li></ol></div>
             
 
           </div>
