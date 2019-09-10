@@ -109,7 +109,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/vae/vae_2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/vae/vae_3.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/vae/vae_4.png">
-<meta property="og:updated_time" content="2019-09-10T10:35:07.836Z">
+<meta property="og:updated_time" content="2019-09-10T10:37:19.430Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解VAE">
 <meta name="twitter:description" content="对VAE的理解一直都很模糊。由于打算用GAN来做实验，作为基础，有必要彻底把VAE弄懂。 回过头又把CS231n关于VAE的部分来回看了好几遍，说真的，Serena Yeung讲得比Justin小哥差太多了，实在没法理解。 所幸在网上找到了一篇博文，清晰明了。 博文里已经讲得很清楚了，我在此用自己的理解做一总结。">
@@ -395,7 +395,7 @@
                 
               
 
-              <time title="Created: 2019-09-10 16:15:01 / Modified: 18:35:07" itemprop="dateCreated datePublished" datetime="2019-09-10T16:15:01+08:00">2019-09-10</time>
+              <time title="Created: 2019-09-10 16:15:01 / Modified: 18:37:19" itemprop="dateCreated datePublished" datetime="2019-09-10T16:15:01+08:00">2019-09-10</time>
             </span>
           
 
@@ -452,7 +452,8 @@
       
 
       
-        <p>对VAE的理解一直都很模糊。由于打算用GAN来做实验，作为基础，有必要彻底把VAE弄懂。 回过头又把CS231n关于VAE的部分来回看了好几遍，说真的，Serena Yeung讲得比Justin小哥差太多了，实在没法理解。 所幸在网上找到了一篇<a href="https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf" target="_blank" rel="noopener">博文</a>，清晰明了。 博文里已经讲得很清楚了，我在此用自己的理解做一总结。 <a id="more"></a> ## 动机</p>
+        <p>对VAE的理解一直都很模糊。由于打算用GAN来做实验，作为基础，有必要彻底把VAE弄懂。 回过头又把CS231n关于VAE的部分来回看了好几遍，说真的，Serena Yeung讲得比Justin小哥差太多了，实在没法理解。 所幸在网上找到了一篇<a href="https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf" target="_blank" rel="noopener">博文</a>，清晰明了。 博文里已经讲得很清楚了，我在此用自己的理解做一总结。 <a id="more"></a></p>
+<h2 id="动机">动机</h2>
 <p>自编码器的缺点在于，不同类别的样本映射到特征空间后是不连续的。</p>
 <p><img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/vae/AE_embed.png" width="50%" height="50%"> 例如上图是在MNIST数据集上训练得到，可以看到不同类别的数字图像在二维空间中被明显地分开。它的好处仅表现在取区分和训练数据相似的数据。</p>
 <p>但生成模型的目的是从潜在空间（latent space）中随机采样，或是在输入图像的基础上生成一些变体（要求潜在空间的连续性），从上图明显可以看出，潜在空间中还有大量没有被覆盖到的区域——如果在这些区域上采样，解码器该如何判断？ 我们希望不同的类别彼此尽可能靠近同时又能区分开。 这就是VAE做的事情。</p>
@@ -721,7 +722,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概率解释"><span class="nav-number">1.</span> <span class="nav-text">概率解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#损失函数"><span class="nav-number">2.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成过程"><span class="nav-number">3.</span> <span class="nav-text">生成过程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#动机"><span class="nav-number">1.</span> <span class="nav-text">动机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概率解释"><span class="nav-number">2.</span> <span class="nav-text">概率解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#损失函数"><span class="nav-number">3.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成过程"><span class="nav-number">4.</span> <span class="nav-text">生成过程</span></a></li></ol></div>
             
 
           </div>
