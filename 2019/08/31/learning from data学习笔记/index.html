@@ -85,7 +85,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_20.png%20=488x">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_21.png%20=488x">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_22.png%20=488x">
-<meta property="og:updated_time" content="2019-09-11T02:21:57.763Z">
+<meta property="og:updated_time" content="2019-09-11T02:23:13.553Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="可学习理论">
 <meta name="twitter:description" content="啊、">
@@ -301,7 +301,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-09-11 10:21:57" itemprop="dateModified" datetime="2019-09-11T10:21:57+08:00">2019-09-11</time>
+                <time title="Modified: 2019-09-11 10:23:13" itemprop="dateModified" datetime="2019-09-11T10:23:13+08:00">2019-09-11</time>
               </span>
             
           
@@ -348,12 +348,12 @@
 <p><img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_4.png" width="80%" height="80%"></p>
 <p>目前我们已经知道了，学习是可行的，即：<span class="math display">\[ E_{in}(g)\approx E_{out}(g) \]</span> 但这还不够。我们期望的是<span class="math inline">\(g\approx f\)</span>，即：<span class="math display">\[ E_{out}(g)\approx 0 \]</span></p>
 <h2 id="第五课">第五课</h2>
-<p>从考虑了多种假设的Hoeffding不等式可以看出，这个概率上界过于保守，保守的原因是假设这<span class="math inline">\(M\)</span>个bad events之间没有重合。 所谓的bad event是指样本内误差和样本外误差超出<span class="math inline">\(\epsilon\)</span>： <span class="math display">\[ \left|E_{\mathrm{in}}\left(h_{m}\right)-E_{\mathrm{out}}\left(h_{m}\right)\right|&gt;\epsilon \]</span></p>
+<p>从考虑了多种假设的Hoeffding不等式可以看出，这个概率上界过于保守，保守的原因是假设这<span class="math inline">\(M\)</span>个bad events之间没有重合。 所谓的bad event是指样本内误差和样本外误差超出<span class="math inline">\(\epsilon\)</span>： <span class="math display">\[\left|E_{\mathrm{in}}\left(h_{m}\right)-E_{\mathrm{out}}\left(h_{m}\right)\right|&gt;\epsilon\]</span></p>
 <p>而联合上界为：</p>
 <p><span class="math display">\[ \begin{aligned} \mathbb{P}\left[\mathcal{B}_{1} \text { or } \mathcal{B}_{2} \text { or } \cdots\right.&amp;\left.\text { or } \mathcal{B}_{M}\right] \\ &amp; \leq \underbrace{\mathbb{P}\left[\mathcal{B}_{1}\right]+\mathbb{P}\left[\mathcal{B}_{2}\right]+\cdots+\mathbb{P}\left[\mathcal{B}_{M}\right]}_{\text {no overlaps } M \text { terms }} \end{aligned} \]</span></p>
 教授用一个例子解释了bad events之间的重合：
 <div data-align="center">
-<p><img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_5.png" width="30%" height="30%"> <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_6.png" width="30%" height="30%"></p>
+<p><img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_5.png" width="30%" height="30%"><img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_6.png" width="30%" height="30%"></p>
 </div>
 <p>图中的<span class="math inline">\(E_{out}\)</span>是指被误判的那部分在整个数据中所占的比例，而<span class="math inline">\(E_{in}\)</span>是指采样点中被误判的那部分占所的比例。 对于另一个假设（图中黄线所示），其与第一种假设的误差明显有重合的部分。 <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_7.png" style="width:30.0%" alt="lfd_7"><br>
 所以<span class="math inline">\(M\)</span>是有机会被替换掉的。 为了替换点<span class="math inline">\(M\)</span>，这里不再考虑整个输入空间，而是有限的输入点，计算这些点的dichotomies。又是一个形象的例子： <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_8.png" style="width:50.0%" alt="lfd_8"> 左上角的红蓝区域代表着当前假设（那根直线）对输入空间的判别，但这是不可见的，因为无法获知整个输入空间。右上角图片可以想象成一张被打了若干个小孔的纸，叠在左上角图片上后可以透过小孔观察到小孔所属的颜色，即假设对采样点的判断。当选择不同假设时，这些采样点就会有不同的颜色。 <span class="math inline">\(dichotomy\)</span>的本意是“二分”，一些点会被判定为红色，另一些点会被判定为蓝色，这样的一个划分情况被称为一个<span class="math inline">\(dichotomy\)</span>。 <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_9.png%20=488x" alt="lfd_9"> 上图很清楚地解释了相关概念。虽然<span class="math inline">\(|\mathcal{H}|\)</span>是无限的，但当无限的假设作用到有限的采样点上时，必然有很多假设会得到相同的结果，即<span class="math inline">\(dichotomy\)</span>的数量有限，最多为<span class="math inline">\(2^{N}\)</span>。</p>
