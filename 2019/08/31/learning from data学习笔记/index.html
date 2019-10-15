@@ -78,15 +78,15 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_12.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_13.png ">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_14.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_15.png ">
-<meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_16">
+<meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_15.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_16.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_17.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_18.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_19.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_20.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_21.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_22.png">
-<meta property="og:updated_time" content="2019-10-15T03:40:37.592Z">
+<meta property="og:updated_time" content="2019-10-15T05:39:19.022Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="可学习理论">
 <meta name="twitter:description" content="我在夏季学期选修了《统计机器学习理论》，虽然课程只上了短短一周，但却令我耳目一新，越上越觉得有趣，捧起Vapnik那本《统计学习理论的本质》也看得津津有味。课程最后要求就自己感兴趣的部分写一份调研报告，在查阅资料的过程中偶然发现了Caltech的一门课：Learning From Data，前7课讲的恰好是统计学习理论。老爷子讲得很生动形象，强烈推荐。在此对这部分课程做一梳理总结。">
@@ -281,7 +281,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-15 11:40:37" itemprop="dateModified" datetime="2019-10-15T11:40:37+08:00">2019-10-15</time>
+                <time title="修改时间：2019-10-15 13:39:19" itemprop="dateModified" datetime="2019-10-15T13:39:19+08:00">2019-10-15</time>
               </span>
             
           
@@ -374,11 +374,11 @@
 <h3 id="m_mathcalhn是多项式"><span class="math inline">\(m_{\mathcal{H}}(N)\)</span>是多项式</h3>
 <p>为了证明<span class="math inline">\(m_{\mathcal{H}}(N)\)</span>是多项式，尝试去证明<span class="math inline">\(m_{\mathcal{H}}(N)\leq\)</span>一个多项式。其中用到的一个关键量是<span class="math inline">\(B(N,k)\)</span>。这个量在上节课的最后出现过，其意义是对<span class="math inline">\(N\)</span>个点，在break point为<span class="math inline">\(k\)</span>的限制下，所能得到<span class="math inline">\(dichotomies\)</span>的最大值。这里是对所有可能的假设集而言，它是生长函数关于假设集的上界。</p>
 <p>证明的过程需要动动脑筋。先从逻辑上写出<span class="math inline">\(B(N,k)\)</span>的递推关系式。</p>
-<p>（图中的<span class="math inline">\(S_2\)</span>表示那些<span class="math inline">\(x_1,x_2,\ldots,x_{N-1}\)</span>的值相同，但<span class="math inline">\(x_N\)</span>的值既有<span class="math inline">\(-1\)</span>也有<span class="math inline">\(+1\)</span>的<span class="math inline">\(dichotomy\)</span>；<span class="math inline">\(S_1\)</span>与之相反） <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_14.png" width="50%"> 然后既可以从图中归纳出<span class="math inline">\(B(N,k)\)</span>的上界，也可以进一步得到<span class="math inline">\(B(N,k)\)</span>上界的解析表达式。 <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_15.png " width="50%"> 最终有如下结论：</p>
+<p>（图中的<span class="math inline">\(S_2\)</span>表示那些<span class="math inline">\(x_1,x_2,\ldots,x_{N-1}\)</span>的值相同，但<span class="math inline">\(x_N\)</span>的值既有<span class="math inline">\(-1\)</span>也有<span class="math inline">\(+1\)</span>的<span class="math inline">\(dichotomy\)</span>；<span class="math inline">\(S_1\)</span>与之相反） <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_14.png" width="50%"> 然后既可以从图中归纳出<span class="math inline">\(B(N,k)\)</span>的上界，也可以进一步得到<span class="math inline">\(B(N,k)\)</span>上界的解析表达式。 <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_15.png" width="50%"> 最终有如下结论：</p>
 <p>给定假设集<span class="math inline">\(\mathcal{H}\)</span>，其break point <span class="math inline">\(\mathcal{k}\)</span>也随之确定，<span class="math display">\[ m_{\mathcal{H}}(N) \leq B(N,k) \leq\underbrace{\sum_{i=0}^{k-1}\left(\begin{array}{c}{N} \\ {i}\end{array}\right)}_{\text {maximum power is } N^{k-1}} \]</span> 因为k是一个常数，所以<span class="math inline">\(N^{k-1}\)</span>是多项式。</p>
 <h3 id="m_mathcalhn可以替换m"><span class="math inline">\(m_{\mathcal{H}}(N)\)</span>可以替换<span class="math inline">\(M\)</span></h3>
 <p>教授说严谨的证明有6页之多，但有必要解释清楚其中的一些关键，以便于理解详细的证明。</p>
-<p>需要解释清楚三件事： <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_16" width="50%"> 一是，我们知道<span class="math inline">\(M\)</span>是假设没有重合，但生长函数是怎么和重合扯上关系的呢？</p>
+<p>需要解释清楚三件事： <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_16.png" width="50%"> 一是，我们知道<span class="math inline">\(M\)</span>是假设没有重合，但生长函数是怎么和重合扯上关系的呢？</p>
 <p>二是，生长函数针对的是<span class="math inline">\(E_{in}\)</span>，但和整个空间联系的是<span class="math inline">\(E_{out}\)</span>。</p>
 <p>三是把上述两点组合起来得到结论。</p>
 <p>通过这张图可以形象地理解： <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_17.png" width="50%"> 图(a)的长方形表示整个数据空间，其中的点表示采样数据（<span class="math inline">\(x_1,x_2,\cdots,x_N\)</span>）。如果当前假设在这个点上表现为bad event，则被涂成红色。由Hoeffding不等式保证bad events的区域（图(a)中的红色区域）较小。</p>
