@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://C-Harlin.github.io/2019/08/31/learning%20from%20data%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-10-15T03:28:47.078Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://C-Harlin.github.io/2019/09/10/VAE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-09-24T12:36:45.181Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://C-Harlin.github.io/2018/03/03/%E4%BA%8C%E5%8D%81%E5%88%86%E9%92%9F%E5%B8%A6%E4%BD%A0%E8%AF%BB%E5%AE%8C%E3%80%8A%E4%B8%AD%E5%9B%BD%E5%8E%86%E4%BB%A3%E6%94%BF%E6%B2%BB%E5%BE%97%E5%A4%B1%E3%80%8B/</loc>
     
     <lastmod>2019-09-18T03:00:36.608Z</lastmod>
@@ -30,13 +44,6 @@
   </url>
   
   <url>
-    <loc>https://C-Harlin.github.io/2019/08/31/learning%20from%20data%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2019-09-11T02:53:35.288Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://C-Harlin.github.io/2019/07/07/RSA%E5%8A%A0%E5%AF%86%E7%9A%84%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86/</loc>
     
     <lastmod>2019-09-10T11:06:51.822Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>https://C-Harlin.github.io/2019/06/13/%E7%9F%A9%E9%98%B5%E8%AE%BA%E5%B9%BF%E4%B9%89%E9%80%86%E6%B1%82%E8%A7%A3%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%20/</loc>
     
     <lastmod>2019-09-10T10:39:15.684Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://C-Harlin.github.io/2019/09/10/VAE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2019-09-10T10:37:19.430Z</lastmod>
     
   </url>
   
