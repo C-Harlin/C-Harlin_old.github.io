@@ -86,7 +86,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_20.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_21.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_22.png">
-<meta property="og:updated_time" content="2019-10-15T03:36:33.549Z">
+<meta property="og:updated_time" content="2019-10-15T03:40:37.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="可学习理论">
 <meta name="twitter:description" content="我在夏季学期选修了《统计机器学习理论》，虽然课程只上了短短一周，但却令我耳目一新，越上越觉得有趣，捧起Vapnik那本《统计学习理论的本质》也看得津津有味。课程最后要求就自己感兴趣的部分写一份调研报告，在查阅资料的过程中偶然发现了Caltech的一门课：Learning From Data，前7课讲的恰好是统计学习理论。老爷子讲得很生动形象，强烈推荐。在此对这部分课程做一梳理总结。">
@@ -281,7 +281,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-15 11:36:33" itemprop="dateModified" datetime="2019-10-15T11:36:33+08:00">2019-10-15</time>
+                <time title="修改时间：2019-10-15 11:40:37" itemprop="dateModified" datetime="2019-10-15T11:40:37+08:00">2019-10-15</time>
               </span>
             
           
@@ -326,8 +326,9 @@
 <p><img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_1.png" width="80%" height="80%"></p>
 <h2 id="第四课">第四课</h2>
 <p>这一讲解释了数据噪声和学习过程的关系，引出了noisy target的概念。</p>
-<p>由于现实中的数据不可能覆盖到所有特征，因此会出现特征相同的两个实例标签却不同的情况。 也正因为此，学习的目标不再是<span class="math inline">\(y=f(x)\)</span>（unknown target function），而是<span class="math inline">\(P(y|x)\)</span>（target distribution），即对于给定数据<span class="math inline">\(x\)</span>，有多大可能是<span class="math inline">\(y\)</span>。 下图是新的有监督学习框架。</p>
-<p><img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_4.png" width="80%" height="80%"></p>
+<p>由于现实中的数据不可能覆盖到所有特征，因此会出现特征相同的两个实例标签却不同的情况。</p>
+<p>也正因为此，学习的目标不再是<span class="math inline">\(y=f(x)\)</span>（unknown target function），而是<span class="math inline">\(P(y|x)\)</span>（target distribution），即对于给定数据<span class="math inline">\(x\)</span>，有多大可能是<span class="math inline">\(y\)</span>。</p>
+<p>下图是新的有监督学习框架。 <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_4.png" width="80%" height="80%"></p>
 <p>目前我们已经知道了，学习是可行的，即：<span class="math display">\[ E_{in}(g)\approx E_{out}(g) \]</span> 但这还不够。我们期望的是<span class="math inline">\(g\approx f\)</span>，即：<span class="math display">\[ E_{out}(g)\approx 0 \]</span></p>
 <h2 id="第五课">第五课</h2>
 <p>从考虑了多种假设的Hoeffding不等式可以看出，这个概率上界过于保守，保守的原因在于，这里的假设是这<span class="math inline">\(M\)</span>个bad events之间没有重合。 所谓的bad event是指样本内误差和样本外误差超出<span class="math inline">\(\epsilon\)</span>： <span class="math display">\[ \left|E_{\mathrm{in}}\left(h_{m}\right)-E_{\mathrm{out}}\left(h_{m}\right)\right|&gt;\epsilon \]</span></p>
@@ -344,7 +345,8 @@
 <p>生长函数的作用是，给定数量<span class="math inline">\(N\)</span>，你来确定这<span class="math inline">\(N\)</span>个数据点应该放在哪些位置上，使得在当前的假设集合下，得到的<span class="math inline">\(dichotomy\)</span>的数量最大，并返回这个最大值。它既与假设集有关，也与数据量<span class="math inline">\(N\)</span>有关。（dichotomy的数量肯定最多是<span class="math inline">\(2^N\)</span>，因为存在一些划分情况是假设集无法做到的） <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_10.png" width="50%"> 从无限到<span class="math inline">\(2^{N}\)</span>，虽然数值依然很大，但至少是一个改进。</p>
 <p>通过下图这一简单的例子，可以更形象地理解生长函数。</p>
 <p>中间的小图选择的点位只能使得<span class="math inline">\(dichotomy=6\)</span>，但我们对此并不关心，因为生长函数要的是最大值，即左图中的情况。 <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_11.png" width="50%"> <span class="math inline">\(N=4\)</span>时，数起来稍微麻烦了点，好在能数出来。但如果<span class="math inline">\(N\)</span>的值更大了怎么办？</p>
-<p>教授给出三个生长函数的实例，在这些例子中，目的都是使得<span class="math inline">\(dichotomy\)</span>在当前假设集和数据量的前提下达到最大。 以第三个例子为例，任选<span class="math inline">\(k\)</span>个点，在这<span class="math inline">\(k\)</span>个点组成的<span class="math inline">\(convex\)</span>多边形包围内的所有点都预测<span class="math inline">\(+1\)</span>，否则预测<span class="math inline">\(-1\)</span>。为了使得<span class="math inline">\(dichotomy\)</span>最大，将<span class="math inline">\(N\)</span>个数据点围成一个圈，则这N个点的任意一种排列组合都能成为一个<span class="math inline">\(dichotomy\)</span>，因此<span class="math inline">\(Convex Sets\)</span>的生长函数为：<span class="math inline">\(m_{\mathcal{H}(N)}=2^{N}\)</span></p>
+<p>教授给出三个生长函数的实例，在这些例子中，目的都是使得<span class="math inline">\(dichotomy\)</span>在当前假设集和数据量的前提下达到最大。</p>
+<p>以第三个例子为例，任选<span class="math inline">\(k\)</span>个点，在这<span class="math inline">\(k\)</span>个点组成的<span class="math inline">\(convex\)</span>多边形包围内的所有点都预测<span class="math inline">\(+1\)</span>，否则预测<span class="math inline">\(-1\)</span>。为了使得<span class="math inline">\(dichotomy\)</span>最大，将<span class="math inline">\(N\)</span>个数据点围成一个圈，则这N个点的任意一种排列组合都能成为一个<span class="math inline">\(dichotomy\)</span>，因此<span class="math inline">\(Convex Sets\)</span>的生长函数为：<span class="math inline">\(m_{\mathcal{H}(N)}=2^{N}\)</span></p>
 <p>回到我们最初的目的，是希望找到<span class="math inline">\(M\)</span>的替代。 <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/learning%20from%20data/lfd_12.png" width="50%"> 如果用生长函数来替代，由于生长函数恰好是多项式形式（polynomial），那么只要数据足够多，一定可以在概率上满足任意误差的学习。</p>
 <p>当然，到底能不能替换要留在下节课说明。</p>
 <h3 id="break-point">Break point</h3>
