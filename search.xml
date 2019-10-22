@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>CS231n系列—神经网络中的优化方法</title>
+      <link href="/2019/10/15/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
+      <url>/2019/10/15/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<p>CS231n看过已有半年多之久，当时在ipad上手写了不少笔记，花费不少时间。昨日看论文时翻看复习了优化方法这一部分，突然想起差不多也该整理整理笔记。一方面是因为这门课确实质量高，另一方面也希望在整理的过程中把这些知识温习一遍。<br> 本文作为学习笔记的第一篇，将常见的优化方法梳理一遍。 <a id="more"></a> 因为梯度下降（gradient descent）太基础了，严格来讲应该属于高数的内容，故直接从SGD开始。</p><h1 id="sgd">1. SGD</h1><p>随机梯度下降（SGD）相比于朴素的梯度下降，最大的差别就是多了“随机”两个字……先别打我，的确是这样，“随机”体现在每一轮用来更新参数的数据只是从整体数据集中“随机”挑选出的一部分。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">    weight_grad = evaluate_grad(loss_function, data, weights)</span><br><span class="line">    weights += -stepsize * weight_grad</span><br></pre></td></tr></table></figure></p><p>但SGD有三个问题：</p><ul><li>(1).条件数问题 如果loss在一个方向上变化过快，而在另一个方向上变化缓慢，那么就会表现出图中锯齿状更新路径： <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/cs231n/1_optimization/opt_1.png" width="50%"> 这还只是2个参数的情形。当有上百万个参数时，最大和最小的参数变化率的差异巨大，使得SGD的表现并不好。</li><li>(2).陷入鞍点 当只有几个参数时，很容易理解陷入鞍点的情形：即各个参数在该点处的<strong>一阶导数为零且二阶导数同号</strong>。此时虽然一阶导数为零，优化停止，但明显连局部最优都算不上<br> 但当参数量是上百万时，鞍点会成为一个大问题。<br> 以10个参数为例，当某点是各个参数的驻点时，它是局部最优点的概率为<span class="math inline">\(2×0.5^{10}\)</span>，而它是鞍点的概率则是<span class="math inline">\(1-2×0.5^{10}\)</span>！也就是说，当用SGD优化停止时（一阶导数为0，更新停止），参数更有可能陷入到了鞍点而非局部最优点。<br> 此外问题还会出现在鞍点附近，在接近鞍点的地方梯度会变得非常小，更新会非常缓慢。</li><li>(3).“随机” 理想的情况是将所有样本一次性输入计算loss，但由于样本总量太大，这样做并不现实。故输入的是一个mini batch的样本，但这意味着得到的并非真正的梯度，而是对真正梯度的一个估计（课程中称之为noisy gradient），所以更新会变得缓慢。</li></ul><p>幸运的是，SGD+momentum可以解决上述问题。</p><h1 id="sgdmomentum">2. SGD+momentum</h1><p><span class="math display">\[ v_{t+1}=\rho v_{t}+\nabla f(x_{t}) \]</span> <span class="math display">\[ x_{t+1}=x_{t}-\alpha v_{t+1} \]</span> 此时不再沿梯度方向更新，而是沿速度方向更新。其中<span class="math inline">\(\rho\)</span>是衰减因子。 它的好处在于： - (1).对于条件数问题，在没有引入速度前，更新路径为锯齿状；但有了速度之后，就有可能抵消各个参数间的变化差异。这里的解释是，梯度变化敏感的那个方向上因为有了上一次的速度，“惯性”会使得其“调头”变得困难；同时，梯度变化迟缓的那个方向上则会一直加速。 - (2).对于陷入鞍点的问题，当遇到局部最优点或鞍点时，由于具有上一次的“速度”，即使此处的梯度为零，仍可以通过顺利通过。 - (3)关于noisy gradient的问题，由于引入了速度，使更新路径更加平缓，这在一定程度上缓解了“噪声”。此外，从更新公式中可以看出，速度不断地衰减并与梯度累加（初始速度为零），所以不妨把速度看做是之前所有梯度（各个方向上）的折衷，故更新路径更加平滑。</p><h1 id="nesterov-momentum">3. Nesterov Momentum</h1><p><span class="math display">\[ v_{t+1}=\rho v_{t}+\alpha \nabla f(x_{t}+\rho v_{t}) \]</span> <span class="math display">\[ x_{t+1}=x_{t}+v_{t+1} \]</span></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 机器学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>理解VAE</title>
       <link href="/2019/09/10/VAE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
       <url>/2019/09/10/VAE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
@@ -260,9 +285,9 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -271,9 +296,9 @@
     
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
