@@ -66,7 +66,7 @@
 <meta property="og:description" content="CS231n看过已有半年多之久，当时在ipad上手写了不少笔记，花费不少时间。昨日看论文时翻看复习了优化方法这一部分，突然想起差不多也该整理整理笔记。一方面是因为这门课确实质量高，另一方面也希望在整理的过程中把这些知识温习一遍。 本文作为学习笔记的第一篇，将常见的优化方法梳理一遍。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/cs231n/1_optimization/opt_1.png">
-<meta property="og:updated_time" content="2019-10-27T10:05:03.177Z">
+<meta property="og:updated_time" content="2019-10-27T10:17:32.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS231n系列—神经网络中的优化方法">
 <meta name="twitter:description" content="CS231n看过已有半年多之久，当时在ipad上手写了不少笔记，花费不少时间。昨日看论文时翻看复习了优化方法这一部分，突然想起差不多也该整理整理笔记。一方面是因为这门课确实质量高，另一方面也希望在整理的过程中把这些知识温习一遍。 本文作为学习笔记的第一篇，将常见的优化方法梳理一遍。">
@@ -271,7 +271,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-27 18:05:03" itemprop="dateModified" datetime="2019-10-27T18:05:03+08:00">2019-10-27</time>
+                <time title="修改时间：2019-10-27 18:17:32" itemprop="dateModified" datetime="2019-10-27T18:17:32+08:00">2019-10-27</time>
               </span>
             
           
@@ -318,17 +318,17 @@
 <li>(3)关于noisy gradient的问题，由于引入了速度，使更新路径更加平缓，这在一定程度上缓解了“噪声”。此外，从更新公式中可以看出，速度不断地衰减并与梯度累加（初始速度为零），所以不妨把速度看做是之前所有梯度（各个方向上）的折衷，故更新路径更加平滑。</li>
 </ul>
 <h1 id="nesterov-momentum">3. Nesterov Momentum</h1>
-<p><span class="math display">\[ v_{t+1}=\rho v_{t}+\alpha \nabla f(x_{t}+\rho v_{t}) \]</span> <span class="math display">\[ x_{t+1}=x_{t}+v_{t+1} \]</span> Nesterov Momentum在凸优化问题中有一些理论上的良好性质。它与SGD+momentum相比最大区别在于计算gradient的位置从<span class="math inline">\(x_t\)</span>变到了<span class="math inline">\(x_t+\rho v_t\)</span>。但这也是Nesterov Momentum有点别扭的地方，即计算gradient的位置和更新的位置不一样。故做以下改动：<br></p>
+<p><span class="math display">\[ v_{t+1}=\rho v_{t}+\alpha \nabla f(x_{t}+\rho v_{t}) \]</span> <span class="math display">\[ x_{t+1}=x_{t}+v_{t+1} \]</span> Nesterov Momentum与SGD+momentum相比最大区别在于，计算gradient的位置<span class="math inline">\((x_t+\rho v_t)\)</span>和实际更新的位置<span class="math inline">\((x_t)\)</span>不同。这么操作乍一看难免让人有点难以理解，为此我们做以下变换：<br></p>
 <p><span class="math display">\[
 令\quad \tilde{x}=x_t+\rho v_t \xrightarrow{代入}
 \left\{
 \begin{split}
 v_{t+1}&amp;=\rho v_t-\alpha \nabla f(\tilde{x_t})\\
-x_{t+1}&amp;=tilde{x_t}-\rho v_t+(1+\rho)v_{t+1}\\
-&amp;tilde{x_t}+v_{t+1}+\rho (v_{t+1}-v_t)
+x_{t+1}&amp;=\tilde{x_t}-\rho v_t+(1+\rho)v_{t+1}\\
+&amp;\tilde{x_t}+v_{t+1}+\rho (v_{t+1}-v_t)
 \end{split}
 \right .
-\]</span> 如此一来，Nesterov Momentum就有了良好的解释——即相比于SGD+momentum只是多了一项“速度差”。<br> 对此我的理解是，引入“速度”的目的是使优化过程可以顺利地通过驻点，也就是故意跑偏；但我们不希望“速度”使更新路径跑偏得太离谱，毕竟计算出的（负）梯度方向才是下降最快的方向，最好是在计算出的方向附近跑偏一点点即可。 从矢量图中可知，引入了“速度差”之后，实际的更新方向会更加偏向负梯度方向，于是上一次“速度”的影响被削弱。</p>
+\]</span> 如此一来，Nesterov Momentum就有了良好的解释——即相比于SGD+momentum只是多了一项“速度差”。<br> 定性的理解是，我们引入“速度”的目的是使优化过程可以顺利地通过驻点，也就是故意跑偏；但我们又不希望这个“速度”使更新方向跑偏得太离谱，毕竟计算出的（负）梯度方向才是下降最快的方向，最好的情况是在计算出的更新方向附近跑偏一点点就好。<br> 从矢量图中可知，引入了“速度差”之后，实际的更新方向会更加偏向负梯度方向，于是“速度”的影响就被削弱了。<br> 当然，Nesterov Momentum在凸优化问题中还有一些其它良好的理论性质。</p>
 
     </div>
 
