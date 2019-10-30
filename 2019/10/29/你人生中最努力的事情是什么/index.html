@@ -57,19 +57,20 @@
   };
 </script>
 
-  <meta name="description" content="欧拉___Orz">
-<meta name="keywords" content="数学">
+  <meta name="description" content="​​这个问题来自于一位正在学习汉语的朋友前几天发来的一封信中。 看似很普通的问题，但用极其标准的书面语问出来，让我不由得多思考了一会儿，颇有思考“人生的意义是什么”的那股端正劲儿。总觉得答案显而易见，似乎只要在记忆中检索就行，但却怎么也得不到一个满意的答案。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RSA加密的数学原理">
-<meta property="og:url" content="https://C-Harlin.github.io/2019/07/07/RSA加密的数学原理/index.html">
+<meta property="og:title" content="你人生中最努力的事情是什么">
+<meta property="og:url" content="https://C-Harlin.github.io/2019/10/29/你人生中最努力的事情是什么/index.html">
 <meta property="og:site_name" content="Harlin&#39;Blog">
-<meta property="og:description" content="欧拉___Orz">
+<meta property="og:description" content="​​这个问题来自于一位正在学习汉语的朋友前几天发来的一封信中。 看似很普通的问题，但用极其标准的书面语问出来，让我不由得多思考了一会儿，颇有思考“人生的意义是什么”的那股端正劲儿。总觉得答案显而易见，似乎只要在记忆中检索就行，但却怎么也得不到一个满意的答案。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-10T11:06:51.822Z">
+<meta property="og:image" content="https://wx1.sinaimg.cn/large/df727223gy1g8fh3zfjxjj212w0by3zp.jpg">
+<meta property="og:updated_time" content="2019-10-30T07:14:49.408Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RSA加密的数学原理">
-<meta name="twitter:description" content="欧拉___Orz">
-  <link rel="canonical" href="https://C-Harlin.github.io/2019/07/07/RSA加密的数学原理/">
+<meta name="twitter:title" content="你人生中最努力的事情是什么">
+<meta name="twitter:description" content="​​这个问题来自于一位正在学习汉语的朋友前几天发来的一封信中。 看似很普通的问题，但用极其标准的书面语问出来，让我不由得多思考了一会儿，颇有思考“人生的意义是什么”的那股端正劲儿。总觉得答案显而易见，似乎只要在记忆中检索就行，但却怎么也得不到一个满意的答案。">
+<meta name="twitter:image" content="https://wx1.sinaimg.cn/large/df727223gy1g8fh3zfjxjj212w0by3zp.jpg">
+  <link rel="canonical" href="https://C-Harlin.github.io/2019/10/29/你人生中最努力的事情是什么/">
 
 
 <script id="page-configurations">
@@ -83,7 +84,7 @@
   };
 </script>
 
-  <title>RSA加密的数学原理 | Harlin'Blog</title>
+  <title>你人生中最努力的事情是什么 | Harlin'Blog</title>
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150644916-1"></script>
   <script>
@@ -230,7 +231,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://C-Harlin.github.io/2019/07/07/RSA加密的数学原理/">
+    <link itemprop="mainEntityOfPage" href="https://C-Harlin.github.io/2019/10/29/你人生中最努力的事情是什么/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Harlin">
@@ -242,7 +243,7 @@
       <meta itemprop="name" content="Harlin'Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">RSA加密的数学原理
+        <h2 class="post-title" itemprop="name headline">你人生中最努力的事情是什么
 
           
         </h2>
@@ -258,7 +259,7 @@
                 
               
 
-              <time title="创建时间：2019-07-07 17:08:21" itemprop="dateCreated datePublished" datetime="2019-07-07T17:08:21+08:00">2019-07-07</time>
+              <time title="创建时间：2019-10-29 15:50:37" itemprop="dateCreated datePublished" datetime="2019-10-29T15:50:37+08:00">2019-10-29</time>
             </span>
           
             
@@ -269,7 +270,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-10 19:06:51" itemprop="dateModified" datetime="2019-09-10T19:06:51+08:00">2019-09-10</time>
+                <time title="修改时间：2019-10-30 15:14:49" itemprop="dateModified" datetime="2019-10-30T15:14:49+08:00">2019-10-30</time>
               </span>
             
           
@@ -279,7 +280,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -298,55 +299,40 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>欧拉___Orz <a id="more"></a>​ 用Linux已经很长一段时间了，对SSH早已不陌生。比如早先将博客部署到github上就是用SSH生成了公钥，再比如前一段时间导师让我新装了一台服务器，后来又在上面个写了点代码，远程访问也必须要用SSH。</p>
-<p>但是吧，就像在Linux下很多莫名其妙的东西一样，大部分时候我都止步于“会用就行”，毕竟要学的东西太多，“but we only live so long”。</p>
-<p>SSH也一样，虽然用了很多次，但一直都不明白它是什么，在干嘛。</p>
-<p>直到在组合数学的课上，老师在讲了一点群论的知识后，说要再讲讲群论在加密中的应用，这才让我有机会在课堂上就能解决长久以来的疑惑。</p>
-<h2 id="预备知识">预备知识</h2>
-<h3 id="欧拉函数varphin">欧拉函数<span class="math inline">\(\varphi(n)\)</span></h3>
-<p><span class="math inline">\(\varphi(n)\)</span>等于比<span class="math inline">\(n\)</span>小且与<span class="math inline">\(n\)</span>互质的正整数的个数。</p>
-<p>利用容斥原理，可以得到欧拉函数的计算公式：</p>
-<p>若<span class="math inline">\(n=p_{1}^{\alpha_{1}}p_{2}^{\alpha_{2}}\cdots p_{k}^{\alpha_{k}}\)</span>，其中<span class="math inline">\(p_{i}\)</span>为素数且各不相同。</p>
-<p>那么，<span class="math inline">\(\varphi(n)=n(1-\frac{1}{p_1})(1-\frac{1}{p_2})\cdots (1-\frac{1}{p_k})\)</span></p>
-<h3 id="欧拉定理">欧拉定理</h3>
-<p>若<span class="math inline">\(a\)</span>与<span class="math inline">\(n\)</span>互质，即<span class="math inline">\((a,n)=1\)</span>，则<span class="math inline">\(a^{\varphi(n)}=1\ mod\ n\)</span></p>
-<h3 id="群">群</h3>
-<p>（有限）群：集合G上有一个二元运算，具有：</p>
-<p>(a).结合律：<span class="math inline">\((xy)z=x(yz)\)</span></p>
-<p>(b).单位元：<span class="math inline">\(∃e∈G ,s.t. ∀x∈G,xe=ex=x\)</span></p>
-<p>(c).逆元：<span class="math inline">\(∀x∈G, ∃x^{-1}∈G\ s.t.\  xx^{-1}=x^{−1}x=e\)</span></p>
-<p>简单来说，群就是一个特殊的集合，在上面定义了一种特殊的“乘法”，满足上述条件即可称为群。 举一个简单的例子：</p>
-<p>给定<span class="math inline">\(n&gt;0\)</span>，令<span class="math inline">\(\frac{Z}{nZ}=\{\bar{0},\bar{1},\cdots,\bar{n-1}\}\)</span>，其中<span class="math inline">\(\bar{i}\)</span>表示除以<span class="math inline">\(n\)</span>余<span class="math inline">\(i\)</span>的数的全体。这里的<span class="math inline">\(\frac{Z}{nZ}\)</span>首先是一个集合，进一步可以验证，在“加法”下，<span class="math inline">\(\bar{i}+\bar{j}=\bar{i+j}\)</span>。因此在此“加法”下，集合<span class="math inline">\(\frac{Z}{nZ}\)</span>成为群。</p>
-<p>借着上面这个例子，我们可以顺便给出<strong>子群</strong>的定义：</p>
-<h3 id="子群">子群</h3>
-<p>设<span class="math inline">\(G\)</span>是一个<span class="math inline">\(n\)</span>元群，<span class="math inline">\(H\)</span>是它的一个子群，对于<span class="math inline">\(∀x,y∈H, xy∈H\)</span>。即子群<span class="math inline">\(H\)</span>就是<span class="math inline">\(G\)</span>的一个子集，同时还要满足封闭性、结合律、有单位元和逆元。</p>
-<p>承接上一个例子，我们取<span class="math inline">\(\frac{Z}{nZ}\)</span>中所有的逆元，得到一个新的集合：<span class="math display">\[(\frac{Z}{nZ})^*=\{\frac{Z}{nZ}中的可逆元\}\]</span> 容易验证，<span class="math inline">\((\frac{Z}{nZ})^*\)</span>是<span class="math inline">\(\frac{Z}{nZ}\)</span>的子群。</p>
-<p>虽然这里只是将<span class="math inline">\((\frac{Z}{nZ})^*\)</span>作为子群的一个示例给出，但不要小看它。<span class="math inline">\((\frac{Z}{nZ})^*\)</span>有一个接下来要用到的特殊性质，即：<span class="math display">\[ \bar{i}可逆\Leftrightarrow(n,i)=1 \]</span> 也就是说，<span class="math inline">\((\frac{Z}{nZ})^*\)</span>中的所有元素都是与<span class="math inline">\(n\)</span>互质且比<span class="math inline">\(n\)</span>小的正整数的同余数构成的。由欧拉公式，与<span class="math inline">\(n\)</span>互质且比<span class="math inline">\(n\)</span>下的正整数的个数为<span class="math inline">\(\varphi(n)\)</span>，所以<span class="math inline">\((\frac{Z}{nZ})^*\)</span>的阶（即群里面元素的个数）为<span class="math inline">\(\varphi(n)\)</span></p>
-<p>有了上述的数学基础后，我们就可以揭开RSA加密算法的面纱了。</p>
-<h2 id="rsa算法">RSA算法</h2>
-<p>RSA加密算法可以称得上是现代密码学的基石。</p>
-<p>传统的加密方法的思想可以参照谍战片中的桥段，即双方约定一种加密规则，发送方用该规则对情报加密，接收方按照规则对情报解密。但这套方法的弊端在于，必须保证加密规则不泄露，一旦加密规则泄露即意味着信息被破解。更可怕的是，你无法知道加密规则是否已经泄露了。</p>
-<p>而RSA加密算法则颠覆了这一过程。简单来说，你有两把钥匙，分别是公钥和私钥。公钥是公开的，而私钥是私密的。发送方用你的公钥对信息进行加密，你收到加密信息后，用私钥对信息进行解密。其他人就算在中途解惑了加密信息也无从下手，因为私钥只有你自己知道。只要私钥安全就能保证信息安全。</p>
-<p>我们来看具体加密过程。假设甲要给乙传送正整数m，这里要求<strong>m小于n且与n互质</strong>。</p>
-<ol type="1">
-<li><p>第一步 选取两个很大的素数<span class="math inline">\(p\)</span>、<span class="math inline">\(q\)</span>，令<span class="math inline">\(n=pq\)</span>，通常<span class="math inline">\(n\)</span>会有上百位</p></li>
-<li><p>第二步 还记得我们之前的提到的关于子群的例子吗？这里我们参照<span class="math inline">\((\frac{Z}{nZ})^*\)</span>的形式，取<span class="math inline">\(\bar{e}\in(\frac{Z}{\varphi(n)Z})^*\)</span>，即<span class="math inline">\(e\)</span>与<span class="math inline">\(\varphi(n)\)</span>互质。 这里的<span class="math inline">\(e\)</span>将用来构成公钥。</p></li>
-<li><p>第三步 因为<span class="math inline">\(\bar{e}\in(\frac{Z}{\varphi(n)Z})^*\)</span>，那么由群关于逆元的性质，必然存在<span class="math inline">\(\bar{d}\in(\frac{Z}{\varphi(n)Z})^*\ s.t.\ \bar{e}\bar{d}=\bar{1}，即ed=1\ mod\ \varphi(n)\)</span>。 这里的<span class="math inline">\(d\)</span>将用来构成私钥。</p></li>
-<li><p>第四步 发送方用公钥对整数<span class="math inline">\(\bar(m)\)</span>加密并传输给接收方：<span class="math display">\[ \bar{m} \Rightarrow \bar{m}^e \]</span></p></li>
-<li><p>第五步 用私钥进行解密：<span class="math display">\[ \bar{m}^e \Rightarrow \bar{m}^{ed} =\bar{m}^{\varphi(n)k+1}=(\bar{m}^{\varphi(n)})^k *\bar{m} \]</span>因为m与n互质，所以由欧拉定理，<span class="math inline">\(\bar{m}^{\varphi(n)}=\bar{1}\)</span>。故：<span class="math display">\[ \bar{m}^e \Rightarrow \bar{m}^{ed} =\bar{m}^{\varphi(n)k+1}=(\bar{m}^{\varphi(n)})^k *\bar{m}=\bar{m} \]</span></p></li>
-</ol>
-<p>至此，我们便完成了对m的加密和解密。 （注意，推导里用的是m的同余数<span class="math inline">\(\bar{m}\)</span>，对<span class="math inline">\(\bar{m}\)</span>成立，当然也对m成立）</p>
-<p>但剩下一点收尾的工作。</p>
-<p>上述推导基于的假设是m与n互质。那要是不互质，还有办法用RSA加密吗？答案是肯定的。证明如下：</p>
-<p><span class="math inline">\(\because p、q为素数且n=pq\)</span></p>
-<p><span class="math inline">\(\therefore 若m与n不互质，则m=pl\ 或\ ql，l\in Z，不妨设m=pl，则：\)</span> <span class="math display">\[ \bar{m}^{ed}=\bar{pl}^{\varphi(n)k+1}=\bar{pl}^{(p-1)(q-1)k+1} \]</span></p>
-<p><span class="math inline">\(\because p、q为素数\)</span></p>
-<p><span class="math inline">\(\therefore 由欧拉定理(或费马小定理)，\bar{pl}^{q-1}=\bar{1}，即\bar{pl}=1\ mod \ q\)</span></p>
-<p><span class="math inline">\(\therefore \bar{pl}^{(p-1)(q-1)k+1}=[\bar{pl}^{q-1}]^{(p-1)k}*\bar{pl}=\bar{pl}\)</span></p>
-<p><span class="math inline">\(\therefore \bar{m}^{ed}=pl\ mod\ q\)</span></p>
-<p><span class="math inline">\(\therefore \bar{m}^{ed}=tq+pl\)</span></p>
-<p><span class="math inline">\(\therefore (pl)^{ed}=tq+pl\)</span> 易得，<span class="math inline">\(t\)</span>可以被<span class="math inline">\(p\)</span>整除</p>
-<p><span class="math inline">\(\therefore (pl)^{ed}=t^{&#39;}pq+pl=t^{&#39;}n+pl=pl\ mod\ n\)</span> 即，<span class="math inline">\(m^{ed}=m\ mod\ n\)</span></p>
+        <p>​​这个问题来自于一位正在学习汉语的朋友前几天发来的一封信中。</p>
+<p>看似很普通的问题，但用极其标准的书面语问出来，让我不由得多思考了一会儿，颇有思考“人生的意义是什么”的那股端正劲儿。总觉得答案显而易见，似乎只要在记忆中检索就行，但却怎么也得不到一个满意的答案。 <a id="more"></a>​</p>
+<h1 id="一">一</h1>
+<p>我的第一反应是高考。但转瞬又突然想起来以前看过的一句话，大意是劝高三的学生再使把劲儿，因为以后会发现高三会是大多数人人生中最努力的一段时光。 <br> 啊，原来以前不经意看过的话会在未来的某个时刻突然从记忆里跳出来，指着你冷笑道：told u so。 <br></p>
+<p>于是在心里猛地摇了摇头，不打算认怂，并尝试在记忆里继续搜索其他努力的案例。 <br></p>
+<p>我顺势就想到了考研的那段日子，但又觉得当时也不算特别努力。 <br> 不对不对，为什么提到努力总是先想到和考试有关的事情呢。 <br></p>
+<p>于是我又试着去想想再小一点的事情，比如实习、做某个课程作业，又觉得虽然在当时也挺用力的，但这些事情并没有难到需要十分努力的程度，因此也就更谈不上“最努力的事情”了。 <br></p>
+<p>哦，那我大概明白了一点，就是“最努力的事情”首先要满足的一个必要条件是这件事情要足够难，需要“最努力”才能完成。 <br></p>
+<p>这么一来，问题就变成了：你人生中最困难的事情是什么？ <br></p>
+<p>这个问题可不简单，在我看来它至少有两层含义—— <br></p>
+<p>1.虽然在所经历的事情中算是“最困难”的，但通过努力最终还是做到了。 <br></p>
+<p>这种情况下，你大可以放心地将它奉为“最努力的事情”——连最硬的骨头都被啃掉了，谁敢说不是呢？</p>
+<p>2.实在太难了，虽然努力过但很遗憾没能完成。 <br></p>
+<p>也是，虽然事情最终没做成，但付出的努力是真实存在过的。如果这份努力的“量”足够大，称之为“最努力的事情”倒也是可以理解的。 <br></p>
+<h1 id="二">二</h1>
+<p>不过这里就又有了一个新的问题：人们为未竟之事付出的努力能有多大？ <br></p>
+<p>It depends. <br></p>
+<p>有的人一开始就被事情的困难程度给吓到，“书上说，人要给自己设定一个合理可行的目标”； <br></p>
+<p>有的人想着先做一段时间再看吧，其实一只脚就已经踩在了退路上，于是果不其然——“我努力过了，但真的做不到”。努力的量四舍五入后等于零； <br></p>
+<p>但也有人是真的努力过，但正如某句话前半句说的那样：努力不一定成功。像职业运动员，刻苦训练数载但最终遗憾失金，这才符合上文提到的第二层含义：这件事是真的难，自己也真的努力过，把它称为“最努力的事情”问心无愧。 <br></p>
+<p>但为什么人们会对未竟之事有着不同做法？排除个人意志等主观因素，这与事情本身的必要性和可行性有着密切联系。</p>
+<p>​<img src="https://wx1.sinaimg.cn/large/df727223gy1g8fh3zfjxjj212w0by3zp.jpg" width="80%" height="80%"></p>
+<p>如果这件事十分必要——像高考之于高中生、冠军之于职业运动员；同时它又足够可行——已经有很多人做到了，那自然将抱定决心，不懈努力。就像求解一个凸优化问题，最优解一定存在，至于能不能找到就看你打算下多少功夫。 <br></p>
+<p>为完成一件“最困难”的事情而付出了巨大的努力，自然可以称之为“最努力的事情”； <br></p>
+<p>但如果这件事最终没做成，也有机会成为“最努力的事情”，只要努力的量足够大； <br></p>
+<p>没完成的事情会有很多，不过只有那些足够必要并且可行的，才能换回一个人不计结果地付出大量努力。 <br></p>
+<h1 id="三">三</h1>
+<p>至此，算是不严谨地回答了“人生中最努力的事情应该是什么”这个问题，但杠精们会说天空中还飘着一朵乌云：人生如此艰难，光是活着就已经很困难了，这难道不是最大努力吗？ <br></p>
+<p>过好人生是必要的，除非愿意做一条咸鱼；它也同样是可行的，因为成功人士并不稀缺；一辈子的时间都在为生活而努力，如果“努力”真的能够被量化，那这个总量想必也会很可观。 <br></p>
+<p>但是如果非要把生活说成“最努力的事情”，怕是只会让人觉得矫情。 <br></p>
+<p>其实这里的逻辑漏洞和芝诺悖论如出一辙，都是忽略了时间因素。 <br></p>
+<p>比起准备高考什么的，过完人生实在是太长了。一辈子的努力平均到每一天，恐怕早已被稀释得微乎其微了。而我们能回想起做过的“最努力的事情”，一定是被限制在某一段时间内极致体验，颇有一种米兰昆德拉所说的“生活中骤然凝聚起来的密度之美”——在极短的时间段内迅速堆积起来的一系列体验，让人们陷入到一种奇妙的变化中。在努力过程中所经历的焦虑、迷茫、紧张、喜悦，不断地轰击着人们的情感和感官，取代了日常生活中的琐碎、无聊、重复、平凡，让人们再也不能好暇以整地面对闲暇，面对时间。 <br></p>
+<p>所以，“你人生中最努力的事情是什么”这个问题的答案关乎人生阅历。<br></p>
+<p>但至少，如果站在当前时间点回看，实在想不出除了高考以外“最努力的事情”是什么，要么就是真的被上天眷顾，要么就是自己选择了一条容易走的路，仅此而已。</p>
 
     </div>
 
@@ -357,23 +343,14 @@
       
 
       <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/数学/" rel="tag"><i class="fa fa-tag"></i> 数学</a>
-            
-          </div>
-        
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/06/13/矩阵论广义逆求解线性方程组 /" rel="next" title="矩阵广义逆求解线性方程组">
-                  <i class="fa fa-chevron-left"></i> 矩阵广义逆求解线性方程组
+                <a href="/2019/10/15/神经网络中的优化方法/" rel="next" title="CS231n系列—神经网络中的优化方法">
+                  <i class="fa fa-chevron-left"></i> CS231n系列—神经网络中的优化方法
                 </a>
               
             </div>
@@ -381,10 +358,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/08/31/learning from data学习笔记/" rel="prev" title="可学习理论">
-                  可学习理论 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -433,7 +406,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#预备知识"><span class="nav-number">1.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#欧拉函数varphin"><span class="nav-number">1.1.</span> <span class="nav-text">欧拉函数\(\varphi(n)\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#欧拉定理"><span class="nav-number">1.2.</span> <span class="nav-text">欧拉定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#群"><span class="nav-number">1.3.</span> <span class="nav-text">群</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子群"><span class="nav-number">1.4.</span> <span class="nav-text">子群</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rsa算法"><span class="nav-number">2.</span> <span class="nav-text">RSA算法</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一"><span class="nav-number">1.</span> <span class="nav-text">一</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二"><span class="nav-number">2.</span> <span class="nav-text">二</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三"><span class="nav-number">3.</span> <span class="nav-text">三</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->

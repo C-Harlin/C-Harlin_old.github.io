@@ -66,7 +66,7 @@
 <meta property="og:description" content="CS231n看过已有半年多之久，当时在ipad上手写了不少笔记，花费不少时间。昨日看论文时翻看复习了优化方法这一部分，突然想起差不多也该整理整理笔记。一方面是因为这门课确实质量高，另一方面也希望在整理的过程中把这些知识温习一遍。 本文作为学习笔记的第一篇，将常见的优化方法梳理一遍。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/cs231n/1_optimization/opt_1.png">
-<meta property="og:updated_time" content="2019-10-27T10:17:32.492Z">
+<meta property="og:updated_time" content="2019-10-27T11:52:03.651Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS231n系列—神经网络中的优化方法">
 <meta name="twitter:description" content="CS231n看过已有半年多之久，当时在ipad上手写了不少笔记，花费不少时间。昨日看论文时翻看复习了优化方法这一部分，突然想起差不多也该整理整理笔记。一方面是因为这门课确实质量高，另一方面也希望在整理的过程中把这些知识温习一遍。 本文作为学习笔记的第一篇，将常见的优化方法梳理一遍。">
@@ -271,7 +271,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-27 18:17:32" itemprop="dateModified" datetime="2019-10-27T18:17:32+08:00">2019-10-27</time>
+                <time title="修改时间：2019-10-27 19:52:03" itemprop="dateModified" datetime="2019-10-27T19:52:03+08:00">2019-10-27</time>
               </span>
             
           
@@ -328,7 +328,7 @@ x_{t+1}&amp;=\tilde{x_t}-\rho v_t+(1+\rho)v_{t+1}\\
 &amp;\tilde{x_t}+v_{t+1}+\rho (v_{t+1}-v_t)
 \end{split}
 \right .
-\]</span> 如此一来，Nesterov Momentum就有了良好的解释——即相比于SGD+momentum只是多了一项“速度差”。<br> 定性的理解是，我们引入“速度”的目的是使优化过程可以顺利地通过驻点，也就是故意跑偏；但我们又不希望这个“速度”使更新方向跑偏得太离谱，毕竟计算出的（负）梯度方向才是下降最快的方向，最好的情况是在计算出的更新方向附近跑偏一点点就好。<br> 从矢量图中可知，引入了“速度差”之后，实际的更新方向会更加偏向负梯度方向，于是“速度”的影响就被削弱了。<br> 当然，Nesterov Momentum在凸优化问题中还有一些其它良好的理论性质。</p>
+\]</span> 如此一来，Nesterov Momentum就有了良好的解释——即相比于SGD+momentum只是多了一项“速度差”。<br> 定性的理解是：我们引入“速度”的目的是使优化过程可以顺利地通过驻点，也就是故意跑偏；但我们又不希望这个“速度”使更新方向跑偏得太离谱，毕竟计算出的（负）梯度方向才是下降最快的方向，最好的情况是在计算出的更新方向附近跑偏一点点就好。 从矢量图中可知，引入了“速度差”之后，实际的更新方向会更加偏向负梯度方向，于是“速度”的影响就被削弱了。<br> 当然，Nesterov Momentum在凸优化问题中还有一些其它良好的理论性质。</p>
 
     </div>
 
@@ -363,6 +363,10 @@ x_{t+1}&amp;=\tilde{x_t}-\rho v_t+(1+\rho)v_{t+1}\\
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/10/29/你人生中最努力的事情是什么/" rel="prev" title="你人生中最努力的事情是什么">
+                  你人生中最努力的事情是什么 <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -429,7 +433,7 @@ x_{t+1}&amp;=\tilde{x_t}-\rho v_t+(1+\rho)v_{t+1}\\
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -442,7 +446,7 @@ x_{t+1}&amp;=\tilde{x_t}-\rho v_t+(1+\rho)v_{t+1}\\
             <a href="/categories/">
           
         
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
