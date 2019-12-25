@@ -72,7 +72,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/attention/embedding.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/attention/multi-head-attention.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/attention/transformer_multi-headed_self-attention-recap.png">
-<meta property="og:updated_time" content="2019-12-25T14:48:56.136Z">
+<meta property="og:updated_time" content="2019-12-25T14:55:17.783Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习中的注意力机制&#x2F;Attention Mechanism">
 <meta name="twitter:description" content="沿着Attention的发展脉络挑了三篇论文总结一下">
@@ -317,9 +317,10 @@
 <p>上述方法都不约而同地使用RNN来完成Seq2Seq的任务，这是基于RNN处理序列数据的天然优势。然而，这种优势同时也不幸成为了阻碍RNN在训练过程中并行化的绊脚石。一旦序列过长，有限的内存将会限制样本的批处理。<a href="http://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf" target="_blank" rel="noopener">“Attention is All you Need”</a>(Vaswani, et al., 2017)提出的transformer模型毫无疑问是第一个只靠self-attention而不使用RNN计算句子输入输出表示的方法。</p>
 <p><a href="http://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf" target="_blank" rel="noopener">Vaswani, et al., 2017</a>文中对<strong>self-attention</strong>的解释仅有一句"所谓的self-attention，又名intra-attention，是一种关联句子中不同位置上的词语来计算句子表示的注意力机制。"，这让第一次接触这个概念的人难免看得云里雾里。经我查阅资料后，目前对此的理解就是一种，不同于RNN那样将源语句依次嵌入成隐向量实现信息融合，而是同时基于源语句中的词语去计算attention。简言之，就是要用前馈神经网络去完成之前RNN做的事。 <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/attention/transformer.png"> <em>图4 Transformer的框架</em></p>
 <h3 id="scale-dot-product-attention">Scale dot-product attention</h3>
-<p>看多了之前的RNN模型，很容易在此处产生误解。尤其是看到了encoder-decoder的结构，以及下面提到的attention计算公式，会不自觉地想要将transformer和基于RNN的模型对应起来。所以建议直接将这里的设定当做是全新引入的来接受。<br> 首先出现的是三个输入向量，分别是query(Q)、key(K)、value(V)，它们都是由词向量乘以不同的参数矩阵后得到。（在input embedding中完成对词语的向量化，其中key和value作为一对，其维度是相同的），如下图所示： <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/attention/embedding.png"> 清楚了输入向量之后，我们直接来看attention的计算： <span class="math display">\[ \text { Attention }(Q, K, V)=\operatorname{softmax}\left(\frac{Q K^{T}}{\sqrt{d_{k}}}\right) V \]</span> 这里就和上述基于RNN的模型有些相似了。 因为计算attention所需的信息是共享的，即(K，V)，所以此处的Q表示多个query构成的矩阵，通过矩阵相乘一并快速计算。 （ps："scale"体现在公式中除以<span class="math inline">\(\sqrt{d_k}\)</span>）</p>
+<p>Scale dot-product attention就是上图中最右侧的子图所示。<br> 看多了之前的RNN模型，很容易在此处产生误解。尤其是看到了encoder-decoder的结构，以及下面提到的attention计算公式，会不自觉地想要将transformer和基于RNN的模型对应起来。所以建议直接将这里的设定当做是全新引入的来接受。<br> 首先出现的是三个输入向量，分别是query(Q)、key(K)、value(V)，它们都是由词向量乘以不同的参数矩阵后得到。（在input embedding中完成对词语的向量化，其中key和value作为一对，其维度是相同的），如下图所示： <img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/attention/embedding.png"> 清楚了输入向量之后，我们直接来看attention的计算： <span class="math display">\[ \text { Attention }(Q, K, V)=\operatorname{softmax}\left(\frac{Q K^{T}}{\sqrt{d_{k}}}\right) V \]</span> 这里就和上述基于RNN的模型有些相似了。 因为计算attention所需的信息是共享的，即(K，V)，所以此处的Q表示多个query构成的矩阵，通过矩阵相乘一并快速计算。 （ps："scale"体现在公式中除以<span class="math inline">\(\sqrt{d_k}\)</span>）</p>
 <h3 id="multi-head-self-attention">Multi-Head Self-Attention</h3>
-<p><img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/attention/multi-head-attention.png" width="60%" height="60%"> <em>Multi-head scaled dot-product attention mechanism. (图像来源: Fig 2 in Vaswani, et al., 2017)</em><br> 上述的Scale dot-product attention是一次性计算attention，而Multi-Head Self-Attention则是多次并行计算attention。<br> 具体来说：</p>
+<p><img src="https://raw.githubusercontent.com/C-Harlin/MarkDownPhotos/master/attention/multi-head-attention.png" width="60%" height="60%"> <em>图5 Multi-head scaled dot-product attention mechanism. (图像来源: Fig 2 in Vaswani, et al., 2017)</em><br></p>
+<p>上述的Scale dot-product attention是一次性计算attention，而Multi-Head Self-Attention则是多次并行计算attention。具体来说：</p>
 <ul>
 <li>首先利用一组参数矩阵<span class="math inline">\(W^Q,W^K,W^V\)</span>对<span class="math inline">\(Q,K,V\)</span>三个矩阵分别做线性变换，然后再接Scale dot-product attention。线性变化的目的是降维，比如<a href="http://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf" target="_blank" rel="noopener">Vaswani, et al., 2017</a>文中就将维度从512将至64。由此得到的结果称为<span class="math inline">\(head\)</span>；</li>
 <li>一共有<span class="math inline">\(h\)</span>组经过不同初始化得到的参数矩阵<span class="math inline">\(W^{Q}_i,W^{K}_i,W^{V}_i\)</span>，每一组都做同样的Scale dot-product attention，于是得到<span class="math inline">\(h\)</span>组<span class="math inline">\(head\)</span>，然后将它们级联到一起后再做一次线性变换。 <span class="math display">\[ \begin{aligned} \text { MultiHead }(Q, K, V) &amp;=\text { Concat }\left(\text { head }_{1}, \ldots, \text { head }_{\mathrm{h}}\right) W^{O} \\ \text { where head }_{\mathrm{i}} &amp;=\text { Attention }\left(Q W_{i}^{Q}, K W_{i}^{K}, V W_{i}^{V}\right) \end{aligned} \]</span></li>
@@ -333,6 +334,7 @@
 <p>和encoder的模块稍有不同，decoder的模块中包含了三个子层，其中第二层和第三层与encoder无异，而第一层略微改变的地方是使用了Masked Multi-Head Attention。 具体来说，在解码器中仅允许self-attention关注输出序列中“过去”的位置。这是通过在self-attention计算softmax步骤之前，先屏蔽掉“将来”的位置（将它们设置为-inf）来完成的。</p>
 <h3 id="the-final-linear-and-softmax-layer">The Final Linear and Softmax Layer</h3>
 <p>最后就是全连接层加softmax得到输出结果，当然对应的单词作为下次decoder的query。</p>
+<p>参考资料： [1]["Attention? Attention!"](https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html#self-attention) - Jun 24, 2018 by Lilian Weng<br> [2]["The Illustrated Transformer"](http://jalammar.github.io/illustrated-transformer/) -by Jay Alammar<br> [3][Attention and its Different Forms](https://towardsdatascience.com/attention-and-its-different-forms-7fc3674d14dc) -by Anusha Lihala<br></p>
 
     </div>
 
